@@ -140,8 +140,7 @@ HAVE = {
                     "seq": {5, 4, 3}},
     "toniot":      {"rf": {"pct_100", "packet_abs_5", "packet_abs_4", "packet_abs_3"},
                     "seq": {5, 4, 3}},
-    "cic_iot2023": {"rf": {"pct_100", "packet_abs_5", "packet_abs_4", "packet_abs_3",
-                           "packet_abs_2", "packet_abs_1"},
+    "cic_iot2023": {"rf": {"pct_100", "packet_abs_5", "packet_abs_4", "packet_abs_3"},
                     "seq": {5, 4, 3}},
 }
 
@@ -261,10 +260,10 @@ def fig_occlusion():
     ax.set_xlabel("macro-F1 drop")
 
     handles = [
-        Patch(fc=ORANGE, hatch="//", ec="white", label="derived from the header"),
-        Patch(fc=BLUE, label="identifies host or tool"),
+        Patch(fc=ORANGE, hatch="//", ec="white", label="IP checksum"),
+        Patch(fc=BLUE, label="IP/TCP header field"),
         Patch(fc=AQUA, hatch="xx", ec="white", label="application payload"),
-        Patch(fc="#b8b7b0", hatch="..", ec="white", label="no identifying value"),
+        Patch(fc="#b8b7b0", hatch="..", ec="white", label="other header field"),
     ]
     ax.legend(handles=handles, loc="lower right", handlelength=1.6, labelspacing=0.3)
     save(fig, "fig_occlusion")

@@ -1,16 +1,56 @@
-# Early intrusion detection: source composition and header leakage
+# Shortcut Learning in Early Intrusion Detection
 
-Code and aggregate results for the paper *Shortcut Learning in Early Intrusion
-Detection: Header Fingerprints Across Four Datasets* (IEEE TPS 2026), by
+[![Paper: IEEE TPS 2026](https://img.shields.io/badge/paper-IEEE%20TPS%202026-1f6f5c)](#citation)
+![Python 3.12](https://img.shields.io/badge/python-3.12-3776ab)
+![PyTorch](https://img.shields.io/badge/PyTorch-sequence%20models-ee4c2c)
+![Datasets: 4](https://img.shields.io/badge/datasets-4-555)
+
+Code and aggregate results for the paper **"Shortcut Learning in Early Intrusion
+Detection: Header Fingerprints Across Four Datasets"** (IEEE TPS 2026), by
 Michele Guida, Stefano Iannucci, Raj Patel, Shahram Rahimi, Sudip Mittal and
 Paolo Merialdo (Roma Tre University and The University of Alabama).
 
-This repository contains the code that produces every table and every figure of
-the paper: the flow-feature and raw-byte pipelines, the three masking policies,
-the byte-region occlusion sweep, and the five-seed harness that generated the
-reported means and standard deviations.
+How early can a network intrusion be detected, and what is the model actually
+looking at when it succeeds? We classify flows from their first 5, 4, 3, 2 or 1
+packets on four public datasets, with two pipelines, and then remove header
+fields one at a time to see what the score was resting on.
 
-The datasets are not
+<p align="center">
+  <img src="docs/fig_threshold.png" width="48%" alt="Macro-F1 against the number of packets retained, on four datasets">
+  <img src="docs/fig_probes.png" width="48%" alt="Macro-F1 drop at three packets under three probes, on four datasets">
+</p>
+
+## Findings at a glance
+
+- **Flow statistics hold until the handshake.** On CIC-IDS2017 a random forest
+  keeps a macro-F1 of 0.95 with four packets and falls to 0.73 with three, when
+  application-level evidence is no longer observed.
+- **Raw bytes look more robust, until header fields are masked.** At three
+  packets the byte models score 0.93 with addresses and ports masked, and 0.60
+  once IP and TCP options are also zeroed.
+- **The same probes, four testbeds.** Removing the two initial-TCP-window
+  features at three packets costs 10, 16, 21 and 3 macro-F1 points on
+  CIC-IDS2017, CIC-IDS2018, ToN-IoT and CIC-IoT2023.
+- **Source composition matters.** The effects shrink as attack classes are
+  spread over more sources: 6, 26, 99 and 2,899 attack-source addresses.
+
+These are within-dataset measurements. Generalization to unseen hosts and tools
+is not tested here.
+
+## Quick start
+
+Regenerate every figure and table of the paper from the included results, with
+no dataset and no GPU:
+
+```bash
+conda env create -f environment.yml && conda activate earlynids
+python figures/make_figures.py
+python seed_runs/make_tables.py figures/results.json
+```
+
+This repository contains the flow-feature and raw-byte pipelines, the masking
+policies, the byte-region occlusion sweep, and the five-seed harness that
+generated the reported means and standard deviations. The datasets are not
 redistributed; `scripts/*/download.py` fetches them from their official sources,
 which require you to register under your own details.
 
@@ -38,6 +78,7 @@ scripts/<dataset>/    download, flow reconstruction, byte extraction, training
 src/<dataset>/        labeling, flow pipelines, model definitions, data loading
 seed_runs/            the five-seed harness: manifests, queue, aggregation, tables
 figures/              results.json and the script that draws the four figures
+tables/exclusion/     label-matching exclusion rates by flow length and by class
 ```
 
 `figures/results.json` is the aggregate this study reports: 109 configurations,
@@ -138,3 +179,14 @@ Attribution on a single frozen model is less stable than the paired differences
 between retrained models. Where the five seeds disagree on which region is most
 affected, the tables report the vote as a fraction, and a tie is printed as both
 names rather than resolved silently.
+
+## Citation
+
+```bibtex
+@inproceedings{guida2026shortcut,
+  author    = {Guida, Michele and Iannucci, Stefano and Patel, Raj and Rahimi, Shahram and Mittal, Sudip and Merialdo, Paolo},
+  title     = {Shortcut Learning in Early Intrusion Detection: Header Fingerprints Across Four Datasets},
+  booktitle = {IEEE International Conference on Trust, Privacy and Security in Intelligent Systems, and Applications (TPS)},
+  year      = {2026}
+}
+```
