@@ -47,6 +47,7 @@ Registration identity (override via flags or env if needed):
 from __future__ import annotations
 
 import argparse
+import os
 import sys
 import time
 from html.parser import HTMLParser

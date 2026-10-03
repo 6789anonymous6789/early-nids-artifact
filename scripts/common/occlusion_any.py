@@ -12,6 +12,7 @@ training, so the baseline reported here reproduces the training-time macro-F1.
 from __future__ import annotations
 
 import argparse
+import os
 import json
 import sys
 from pathlib import Path

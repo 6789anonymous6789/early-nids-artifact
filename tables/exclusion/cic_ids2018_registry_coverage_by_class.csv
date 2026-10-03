@@ -1,0 +1,17 @@
+class,used_in_paper,registry_entries,matched_entries,coverage_pct
+BENIGN,yes,59353486,57088732,96.18
+DoS Hulk,yes,1803246,1720749,95.43
+DDoS-HOIC,yes,1082293,1082293,100.00
+DDoS-LOIC-HTTP,yes,289328,289328,100.00
+Botnet Ares,yes,143183,143183,100.00
+SSH-BruteForce,yes,94197,94197,100.00
+Infiltration - NMAP Portscan,yes,89374,89243,99.85
+DoS GoldenEye,yes,26861,26861,100.00
+DoS Slowloris,yes,10770,10770,100.00
+DDoS-LOIC-UDP,yes,2778,797,28.69
+Web Attack - Brute Force,yes,268,268,100.00
+Web Attack - XSS,yes,117,117,100.00
+FTP-BruteForce,no,298874,298874,100.00
+Infiltration - Dropbox Download,no,113,113,100.00
+Infiltration - Communication Victim Attacker,no,204,94,46.08
+Web Attack - SQL,no,53,53,100.00

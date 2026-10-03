@@ -1,0 +1,17 @@
+class,used_in_paper,registry_entries,matched_entries,coverage_pct
+BENIGN,yes,1582566,1579668,99.82
+Portscan,yes,159066,159042,99.98
+DoS Hulk,yes,159049,156433,98.36
+DDoS,yes,95144,94516,99.34
+Infiltration - Portscan,yes,71767,71454,99.56
+DoS GoldenEye,yes,7647,7621,99.66
+DoS Slowloris,yes,5706,5706,100.00
+DoS Slowhttptest,yes,5108,5108,100.00
+Botnet,yes,4803,4803,100.00
+FTP-Patator,yes,3984,3983,99.97
+SSH-Patator,yes,2988,2988,100.00
+Web Attack - Brute Force,no,1365,1365,100.00
+Web Attack - XSS,no,673,673,100.00
+Infiltration,no,81,81,100.00
+Web Attack - SQL Injection,no,18,18,100.00
+Heartbleed,no,11,11,100.00
