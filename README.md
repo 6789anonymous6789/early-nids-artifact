@@ -4,6 +4,7 @@
 ![Python 3.12](https://img.shields.io/badge/python-3.12-3776ab)
 ![PyTorch](https://img.shields.io/badge/PyTorch-sequence%20models-ee4c2c)
 ![Datasets: 4](https://img.shields.io/badge/datasets-4-555)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 Code and aggregate results for the paper **"Shortcut Learning in Early Intrusion
 Detection: Header Fingerprints Across Four Datasets"** (IEEE TPS 2026), by
@@ -190,3 +191,8 @@ names rather than resolved silently.
   year      = {2026}
 }
 ```
+
+## License
+
+The code is released under the [MIT License](LICENSE). The datasets are not part
+of this repository and remain under the terms of their providers.
