@@ -1,13 +1,16 @@
 # Early intrusion detection: source composition and header leakage
 
-Artifact for an anonymous submission under double-blind review.
+Code and aggregate results for the paper *Shortcut Learning in Early Intrusion
+Detection: Header Fingerprints Across Four Datasets* (IEEE TPS 2026), by
+Michele Guida, Stefano Iannucci, Raj Patel, Shahram Rahimi, Sudip Mittal and
+Paolo Merialdo (Roma Tre University and The University of Alabama).
 
 This repository contains the code that produces every table and every figure of
 the paper: the flow-feature and raw-byte pipelines, the three masking policies,
 the byte-region occlusion sweep, and the five-seed harness that generated the
 reported means and standard deviations.
 
-Nothing here identifies the authors or their institution. The datasets are not
+The datasets are not
 redistributed; `scripts/*/download.py` fetches them from their official sources,
 which require you to register under your own details.
 
